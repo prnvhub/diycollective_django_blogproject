@@ -52,7 +52,7 @@
 
 
                 <div class="content">
-
+                    {% if user.is_authenticated %}
                     <h2 class="page-title">Manage Posts</h2>
 
                     <form action="{% url 'post_create' %}" method="POST" enctype="multipart/form-data">
@@ -61,10 +61,10 @@
                             <label>Title</label>
                             <input type="text" name="title" class="text-input">
                         </div>
-                        <div>
+                        <!-- <div>
                             <label>Author</label>
-                            <input type="text" name="author" class="text-input">
-                        </div>
+                            <input type="select" name="author" class="text-input">
+                        </div> -->
                         <div>
                             <label>Body</label>
                             <textarea name="body" id="body"></textarea>
@@ -84,7 +84,9 @@
                             <button type="submit" class="btn btn-big">Add Post</button>
                         </div>
                     </form>
-
+                        {% else %}
+                        Page Not Found
+                        {% endif %}
                 </div>
 
             </div>

@@ -13,7 +13,7 @@ def home(request):
     return render(request,'index.html',{'blogs':context})
 
 def dash(request):
-    pst=post.objects.all()
+    pst=post.objects.all().filter(user=request.user)
     return render(request,'post_index.html',{'posts':pst})
 
 def single(request,id):
@@ -25,10 +25,10 @@ def single(request,id):
 def post_create(request):
     if request.method=='POST':
         title=request.POST.get('title')
-        author=request.POST.get('author')
         body=request.POST.get('body')
         img=request.FILES['image']
-        p=post(title=title,author=author,body=body,img=img)
+        p=post(title=title,body=body,img=img)
+        p.user=request.user
         p.save()
         return redirect(dash)
     return render(request,'post_create.html')

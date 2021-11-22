@@ -36,7 +36,7 @@
         <ul style="background-color: gray;">
           {% if user.is_authenticated %}
           <a href="{% url 'dash' %}">Hi {{user.first_name}}</a>
-          <a href="accounts/logout">Sign Out</a>
+          <a href="{% url 'logout' %}">Sign Out</a>
           {% else %}
           <a href="{% url 'register' %}">Sign Up</a>
           <a href="{% url 'login' %}">Sign In</a>

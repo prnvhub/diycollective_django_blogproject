@@ -55,11 +55,11 @@
                     <h2 class="page-title">Manage Posts</h2>
 
                     <table>
+                        {% if user.is_authenticated %}
                         <thead>
                             <th>Sn</th>
                             <th>Title</th>
-                            <th>Author</th>
-                            <th colspan="2" style="text-align: center;">Action</th>
+                            <th colspan="2" style="text-align: center;">Actions</th>
                             <th>Created</th>
                             <th>Updated</th>
                         </thead>
@@ -68,13 +68,15 @@
                             <tr>
                                 <td>{{ forloop.counter }}</td>
                                 <td><a href="/single/{{i.id}}">{{i.title}}</a></td>
-                                <td>{{i.author}}</td>
-                                <td><a href="/update/{{i.id}}" class="edit">edit</a></td>
-                                <td><a href="/delete/{{i.id}}" class="delete">delete</a></td>
+                                <td><a href="/update/{{i.id}}" class="edit">Edit</a></td>
+                                <td><a href="/delete/{{i.id}}" class="delete">Delete</a></td>
                                 <td>{{i.created_on}}</td>
                                 <td>{{i.updated_on}}</td>
                             </tr>
                             {% endfor %}
+                            {% else %}
+                            Page Not Found
+                            {% endif %}
                     </table>
 
                 </div>
