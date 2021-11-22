@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
+
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <title>Blog</title>
+</head>
+
+<body>
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+    <!-- Post Slider -->
+    <div class="post-slider">
+      <h1 class="slider-title">Trending Posts</h1>
+      <i class="fas fa-chevron-left prev"></i>
+      <i class="fas fa-chevron-right next"></i>
+      <div class="post-wrapper">
+        {% for p in blogs|slice:":5" %}
+        <div class="post">
+          <a href="/single/{{p.id}}">
+          <img src="{{p.img.url}}" alt="" class="slider-image" style="width: 90%;"></a>
+          <div class="post-info">
+            <h4><a href="/single/{{p.id}}">{{p.title}}</a></h4>
+            <i class="far fa-user"> {{p.author}}</i>
+            &nbsp;
+            <i class="far fa-calendar"> {{p.created_on}}</i>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- // Post Slider -->
+
+    <!-- Content -->
+    <div class="content clearfix">
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1 class="recent-post-title">Recent Posts</h1>
+        {% for p in blogs|slice:":3" %}
+        <div class="post clearfix">
+          <a href="/single/{{p.id}}">
+          <img src="{{p.img.url}}" alt="" class="post-image" style="height: 80%;">
+          </a>
+          <div class="post-preview">
+            <h2><a href="/single/{{p.id}}">{{p.title}}</a></h2>
+            <i class="far fa-user"> {{p.author}}</i>
+            &nbsp;
+            <i class="far fa-calendar"> {{p.created_on}}</i>
+            <p class="preview-text">
+              {{p.body}}
+            </p>
+            <a href="/single/{{p.id}}" class="btn read-more">Read More</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- // Main Content -->
+      <div class="sidebar">
+
+        <div class="section search">
+          <h2 class="section-title">Search</h2>
+          <form action="index.html" method="post">
+            <input type="text" name="search-term" class="text-input" placeholder="Search...">
+          </form>
+        </div>
+
+
+        <div class="section topics">
+          <h2 class="section-title">Topics</h2>
+          <ul>
+            <li><a href="#">Poems</a></li>
+            <li><a href="#">Quotes</a></li>
+            <li><a href="#">Fiction</a></li>
+            <li><a href="#">Biography</a></li>
+            <li><a href="#">Motivation</a></li>
+            <li><a href="#">Inspiration</a></li>
+            <li><a href="#">Life Lessons</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- // Content -->
+
+  </div>
+  <!-- // Page Wrapper -->
+
+  <!-- footer -->
+{% include 'footer.html' %}
+  <!-- // footer -->
+
+
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Slick Carousel -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <!-- Custom Script -->
+  <script src="{% static 'js/scripts.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}
