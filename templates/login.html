@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Candal|Lora" rel="stylesheet">
 
   <!-- Custom Styling -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
   <title>Login</title>
 </head>
@@ -25,7 +25,8 @@
 
   <div class="auth-content">
 
-    <form action="login.html" method="post">
+    <form action="login" method="post">
+      {% csrf_token %}
       <h2 class="form-title">Login</h2>
 
       <div>
@@ -39,17 +40,21 @@
       <div>
         <button type="submit" name="login-btn" class="btn btn-big">Login</button>
       </div>
-      <p>Or <a href="register.html">Sign Up</a></p>
+      <p>Or <a href="{% url 'register' %}">Sign Up</a></p>
     </form>
 
   </div>
-
+<div>
+  {% for message in messages %}
+  <h4>{{message}}</h4>
+  {% endfor %}
+</div>
 
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- Custom Script -->
-  <script src="js/scripts.js"></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
 
 {% include 'footer.html' %}
 
