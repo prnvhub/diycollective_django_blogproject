@@ -36,10 +36,10 @@
           <a href="/single/{{p.id}}">
           <img src="{{p.img.url}}" alt="" class="slider-image" style="width: 90%;"></a>
           <div class="post-info">
-            <h4><a href="/single/{{p.id}}">{{p.title}}</a></h4>
-            <i class="far fa-user"> {{p.user.get_full_name}}</i>
+            <h4 style="font-size: 20px;"><a href="/single/{{p.id}}">{{p.title}}</a></h4>
+            <i class="far fa-user" style="font-size: 13px;"> {{p.user.get_full_name}}</i>
             &nbsp;
-            <i class="far fa-calendar"> {{p.created_on}}</i>
+            <i class="far fa-calendar" style="font-size: 13px;"> {{p.created_on}}</i>
           </div>
         </div>
         {% endfor %}
@@ -64,7 +64,7 @@
             &nbsp;
             <i class="far fa-calendar"> {{p.created_on}}</i>
             <p class="preview-text">
-              {{p.body}}
+              {{p.body|safe|slice:":350"}}
             </p>
             <a href="/single/{{p.id}}" class="btn read-more">Read More</a>
           </div>

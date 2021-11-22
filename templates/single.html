@@ -37,13 +37,17 @@
       <!-- Main Content Wrapper -->
       <div class="main-content-wrapper">
         <div class="main-content single">
-          <h1 class="post-title" style="margin-bottom: 20px;">{{post1.title}}</h1>
+          <h1 class="post-title" style="margin-bottom: 5px;font-family:'Times New Roman', Times, serif;font-size:50px;text-align:center;">{{post1.title}}</h1>
           {% if post1.user.get_full_name %}
-          <h4 style="text-align: center; color:black;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight:100;margin-bottom:20px;">{{post1.user.get_full_name}} - {{post1.created_on}}</h4>
+          <div class="post-prevw" style="text-align: center; margin-bottom:20px;">
+            <i class="far fa-user" style="font-size: 15px;"> {{post1.user.get_full_name}}</i>
+            &nbsp;
+            <i class="far fa-calendar" style="font-size: 15px;"> {{post1.created_on}}</i>
+          </div>
           {% endif %}
           <img class="post-image" src="{{post1.img.url}}" alt="{{post1.title}}" style="width: 500px; height: 300px; margin: auto; display: block;">
-          <div class="post-content" style="padding-top: 50px;">
-            {{post1.body}}
+          <div class="post-content" style="padding-top: 50px; text-align:justify;">
+            {{post1.body|safe}}
           </div>
         </div>
       </div>
@@ -61,6 +65,11 @@
             <a href="/single/{{b.id}}" class="title">
               <h4>{{b.title}}</h4>
             </a>
+              <div class="post-prevw">
+                <i class="far fa-user" style="font-size: 13px;"> {{b.user.get_full_name}}</i>
+                &nbsp;
+                <i class="far fa-calendar" style="font-size: 13px;"> {{b.created_on}}</i>
+              </div>
           </div>
           {% endfor %}
         </div>
