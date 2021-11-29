@@ -45,7 +45,11 @@
             <i class="far fa-calendar" style="font-size: 15px;"> {{post1.created_on}}</i>
           </div>
           {% endif %}
+          {% if post1.img %}
           <img class="post-image" src="{{post1.img.url}}" alt="{{post1.title}}" style="width: 500px; height: 300px; margin: auto; display: block;">
+          {% else %}
+          <p></p>
+          {% endif %}
           <div class="post-content" style="padding-top: 50px; text-align:justify;">
             {{post1.body|safe}}
           </div>
@@ -61,7 +65,11 @@
           <h2 class="section-title">Popular</h2>
           {% for b in blg|slice:":5" %}
           <div class="post clearfix">
+            {% if b.img %}
             <img src="{{b.img.url}}" alt="">
+            {% else %}
+            <p></p>
+            {% endif %}
             <a href="/single/{{b.id}}" class="title">
               <h4>{{b.title}}</h4>
             </a>

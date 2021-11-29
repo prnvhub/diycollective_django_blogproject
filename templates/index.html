@@ -33,8 +33,12 @@
       <div class="post-wrapper">
         {% for p in blogs|slice:":5" %}
         <div class="post">
+          {% if p.img %}
           <a href="/single/{{p.id}}">
           <img src="{{p.img.url}}" alt="" class="slider-image" style="width: 90%;"></a>
+          {% else %}
+          <p></p>
+          {% endif %}
           <div class="post-info">
             <h4 style="font-size: 20px;"><a href="/single/{{p.id}}">{{p.title}}</a></h4>
             <i class="far fa-user" style="font-size: 13px;"> {{p.user.get_full_name}}</i>
@@ -55,9 +59,13 @@
         <h1 class="recent-post-title">Recent Posts</h1>
         {% for p in blogs|slice:":3" %}
         <div class="post clearfix">
+          {% if p.img %}
           <a href="/single/{{p.id}}">
           <img src="{{p.img.url}}" alt="" class="post-image" style="height: 80%;">
           </a>
+          {% else %}
+          <p></p>
+          {% endif %}
           <div class="post-preview">
             <h2><a href="/single/{{p.id}}">{{p.title}}</a></h2>
             <i class="far fa-user"> {{p.user.get_full_name}}</i>

@@ -1,8 +1,6 @@
 from django.db import models
 from django.shortcuts import redirect, render
-
 from . forms import ModelForm
-
 from . models import post
 
 # Create your views here.
@@ -26,7 +24,7 @@ def post_create(request):
     if request.method=='POST':
         title=request.POST.get('title')
         body=request.POST.get('body')
-        img=request.FILES['image']
+        img=request.FILES.get('img')
         p=post(title=title,body=body,img=img)
         p.user=request.user
         p.save()
