@@ -31,7 +31,7 @@
       <i class="fas fa-chevron-left prev"></i>
       <i class="fas fa-chevron-right next"></i>
       <div class="post-wrapper">
-        {% for p in blogs|slice:":5" %}
+        {% for p in blogs|slice:5 %}
         <div class="post">
           {% if p.img %}
           <a href="/single/{{p.id}}">
@@ -57,7 +57,7 @@
       <!-- Main Content -->
       <div class="main-content">
         <h1 class="recent-post-title">Recent Posts</h1>
-        {% for p in blogs|slice:":3" %}
+        {% for p in blogs|slice:3 %}
         <div class="post clearfix">
           {% if p.img %}
           <a href="/single/{{p.id}}">
@@ -72,7 +72,7 @@
             &nbsp;
             <i class="far fa-calendar"> {{p.created_on}}</i>
             <p class="preview-text">
-              {{p.body|safe|slice:":350"}}
+              {{p.body|safe|truncatechars:150}}
             </p>
             <a href="/single/{{p.id}}" class="btn read-more">Read More</a>
           </div>

@@ -63,7 +63,7 @@
 
         <div class="section popular">
           <h2 class="section-title">Popular</h2>
-          {% for b in blg|slice:":5" %}
+          {% for b in blg|slice:5 %}
           <div class="post clearfix">
             {% if b.img %}
             <img src="{{b.img.url}}" alt="">
